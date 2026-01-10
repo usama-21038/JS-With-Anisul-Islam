@@ -167,6 +167,77 @@ console.log(productsSortPrice);
 const productsSortPriceDesc = newCardProducts.sort((a, b) => b.price - a.price); // descending order
 console.log(productsSortPriceDesc);
 
+//sorting using date
+const productsSortByDate= newCardProducts.sort((a,b)=>{
+    return a.createdAt-b.createdAt; //ascending order
+})
+console.log(productsSortByDate);
+//descending order using date
+const productsSortByDateDesc = newCardProducts.sort((a, b) => b.createdAt - a.createdAt); // descending order
+console.log(productsSortByDateDesc);
+
+
+
+
+
+
+
+//! Create Menu for sorting using switch case
+const menu=`
+1. Sort by name (A-Z)
+2. Sort by name (Z-A)
+3. Sort by price (Low to High)
+4. Sort by price (High to Low)
+5. Sort by date (Old to New)
+6. Sort by date (New to Old)
+`
+const choice=prompt(menu+"Enter your choice (1-6): ");
+
+switch(choice){
+
+    case '1':{
+        const sortedByNameAsc=newCardProducts.sort((a,b)=>{
+            return a.name.localeCompare(b.name);
+        });
+        console.log(sortedByNameAsc);
+        break;
+    }
+    case '2':{
+        const sortedByNameDesc=newCardProducts.sort((a,b)=>{
+            return b.name.localeCompare(a.name);
+        });
+        console.log(sortedByNameDesc);
+        break;
+    }   
+    case '3':{
+        const sortedByPriceAsc=newCardProducts.sort((a,b)=>{
+            return a.price-b.price;
+        });         
+        console.log(sortedByPriceAsc);
+        break;
+    }
+    case '4':{
+        const sortedByPriceDesc=newCardProducts.sort((a,b)=>{
+            return b.price-a.price;
+        });
+        console.log(sortedByPriceDesc);
+        break;
+    }
+    case '5':{
+        const sortedByDateAsc=newCardProducts.sort((a,b)=>{         
+            return a.createdAt-b.createdAt;
+        });
+        console.log(sortedByDateAsc);
+        break;
+    }
+    case '6':{
+        const sortedByDateDesc=newCardProducts.sort((a,b)=>{         
+            return b.createdAt-a.createdAt;
+        });
+        console.log(sortedByDateDesc);
+        break;
+    }
+}
 
 
 
