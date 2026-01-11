@@ -79,12 +79,42 @@
         
 ## JaavaScript part-7 (Intermediate)       
         -Error Handling
-        -Asynchronous programming: async, await , then , catch, callback
-        -JSON
-        -API calling
+                //Error hote pare amon line e use kora, error hole next line gola execute hote kono problem hobe na
+                try{
+                    console.log(x);
+                    catch(error);
+                }
+                //! must show using finally error handling
+                finally{
+                    console.log("Buy");
+                }
+
+            //! throw er sahajje nije nije error create kora jabe
+                const isEleigibleForVote=(age)=>{
+                    if(age<18){
+                        throw new Error("Invalid age for vote eligibility");
+                        retrun 'Welcome to vote';
+                    }
+                }
+            isEleigibleForVote(16);
+
+        -local Storage
+        //## localStorage
+            //localStorage.setItem(key, value), localStorage.getItem(key), localStorage.removeItem(), localStorage.clear()
+
+
+        
+        
+        -JSON(JavaScript Object Notation)
+            -JSON.stringify() //JS object to JSON convert
+            -JSON.parse()     //JSON to JS object convert
+
+        -Synchronous vs asynchronous
+        -Asynchronous programming: promise, async, await , then , catch, callback
+
+        -API calling: get, post, put, delete
 
 ## javaScript part-8 (Intermediate)
-        -local Storage
         -DOM and Event Handler
     
 ## Javascript part -9 (Intermediate)    
