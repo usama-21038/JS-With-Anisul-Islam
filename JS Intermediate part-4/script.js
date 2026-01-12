@@ -74,42 +74,88 @@
 // 
 //@ts-nocheck
 //! Topic: contact manager app
+
+let contacts=[];
+
+
+
 const form=document.getElementById('contact-form');
 console.log(form);
 
+const contactList=document.getElementById('contact-list');
 
 const nameErrorElement=document.getElementById('name-error');
-const emailErrorElement=document.getElementById('email-error');
+const phoneErrorElement=document.getElementById('phone-error');
+
+const inputValidataion=(name,phone)=>{
+    
+let isValid=true;
+
+if(name.length===0){
+    nameErrorElement.textContent="Name cannot be empty";
+    nameErrorElement.style.color='red';
+    isValid=false;
+}
+
+if(phone.length===0){
+    phoneErrorElement.textContent="Phone cannot be empty";
+    phoneErrorElement.style.color='red';
+    isValid=false;
+}
+return isValid;
+}
+
 
 form.addEventListener('submit',(event)=>{
     event.preventDefault();
     console.log('form is submitted');
 
-    const name= document.getElementById('name').value;
- const phone=document.getElementById('phone').value;
+    const name= document.getElementById('name').value.trim();
+ const phone=document.getElementById('phone').value.trim();
 
 
-let isValid=true;
 
-if(name.trim().length===0){
-    nameErrorElement.textContent="Name cannot be empty";
-    isValid=false;
-}
 
-if(phone.trim().length===0){
-    phoneErrorElement.textContent="Phone cannot be empty";
-    isValid=false;
-}
-
+if(inputValidataion(name,phone)){
+    //api data send
 //reset value
+//console.log(name,phone)
+
+//read
+// const contact = document.createElement('li');
+// contact.textContent=`${name},${phone}`
+// contactList.appendChild(contact);
+
+
+const newContact={
+    id: Date.now().toString(),
+    name:name,
+    phone:phone
+}
+
+contacts.push(newContact);
+
+localStorage.setItem('contacts',JSON.stringify(contacts));
+
 nameErrorElement.textContent="";
 phoneErrorElement.textContent="";
 form.reset();
-
+}
 });
 
 
+const renderContacts=()=>{
 
+contacts=JSON.parse(localStorage.getItem('contacts'))
+
+    contacts.forEach((contact)=>{
+        //read
+const contactLi = document.createElement('li');
+contactLi.textContent=`${contact.name},${contact.phone}`
+contactList.appendChild(contact);
+    })
+}
+window.addEventListener("DOMContentLoaded",renderContacts);
 
 
 
